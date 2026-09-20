@@ -65,6 +65,7 @@
 <table>
 <thead><tr><th>Service</th><th>What it receives</th><th>Why</th></tr></thead>
 <tbody>
+<tr><td>Cloudflare Workers (relay)</td><td>The same request that is forwarded to Google Gemini (search coordinates or, if you switch it on, your chat question), plus your IP address</td><td>Passes the request to Google so that our Gemini key is never stored inside the app. The relay does not store the content of your requests. Cloudflare handles connection data under <a href="https://www.cloudflare.com/privacypolicy/">its Privacy Policy</a></td></tr>
 <tr><td>Google Gemini API (Google Maps data)</td><td>Search coordinates (or pincode area) and the type of place you searched for</td><td>Find nearby hospitals, pharmacies, laboratories and imaging centres. Google also receives your device IP address, as with any internet request</td></tr>
 <tr><td>Google Gemini API (AASHU chat)</td><td>Only if you switch it on: the question you type and your last few chat messages</td><td>Write AASHU's answer (see section 6)</td></tr>
 <tr><td>Google Play services location lookup (on your phone)</td><td>The address text of a search result</td><td>Show approximate distances</td></tr>
