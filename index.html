@@ -19,7 +19,7 @@
 <body>
 <main>
 <h1>Privacy Policy</h1>
-<div class="meta">Aarogya Connect (Android app) &middot; Publisher: A3S DIGITECH &middot; Last updated: 24 September 2026</div>
+<div class="meta">Aarogya Connect (Android app) &middot; Publisher: A3S DIGITECH &middot; Last updated: 25 September 2026</div>
 
 <p><strong>In plain language:</strong> your health records stay encrypted on your device; there is no account and no cloud copy. Location is used only when you ask for "near me" results. The app shows ads through Google AdMob. Our AI helper, AASHU, can use Google Gemini only if you switch it on, and it never sees your saved records. You can delete everything the app stores in one tap.</p>
 
@@ -39,7 +39,7 @@
 <p>You can limit ad personalisation on your device: Settings &rarr; Privacy &rarr; Ads (or Google Settings &rarr; Ads on older Android versions) lets you reset your advertising ID or opt out of personalised ads. See Google's <a href="https://policies.google.com/technologies/partner-sites">Partner Sites policy</a> and <a href="https://policies.google.com/privacy">Privacy Policy</a>.</p>
 
 <h2>5. Location and pincode search</h2>
-<p>When you search for nearby facilities, your pincode or GPS coordinates and the kind of place you searched for are sent to map-data services solely to return that one search result: Google Maps data (through the Google Gemini API) and, when Google is unavailable, OpenStreetMap's Nominatim, Photon and Overpass APIs, plus India Post's public pincode directory. To show approximate distances, the address of each result may be looked up by your phone's own location service, which is provided by Google Play services. Only the coordinates, pincode or address needed for that search is sent; your name, health data or any other identifying information is never included. Location access is requested only when you tap "near me", never at launch, and searching by pincode is always offered as an alternative that needs no location permission.</p>
+<p>When you search for nearby facilities, your pincode or GPS coordinates and the kind of place you searched for are sent to map-data services solely to return that one search result: Google Maps data (through the Google Gemini API, relayed by a Cloudflare service) and, when Google is unavailable, OpenStreetMap's Nominatim, Photon and Overpass APIs, plus India Post's public pincode directory. To show approximate distances, the address of each result may be looked up by your phone's own location service, which is provided by Google Play services. Only the coordinates, pincode or address needed for that search is sent; your name, health data or any other identifying information is never included. Location access is requested only when you tap "near me", never at launch, and searching by pincode is always offered as an alternative that needs no location permission.</p>
 
 <h2>6. AASHU, the AI helper, and Google Gemini</h2>
 <p>AASHU answers health questions in two ways, and always tells you which one wrote each answer:</p>
@@ -68,7 +68,7 @@
 <table>
 <thead><tr><th>Service</th><th>What it receives</th><th>Why</th></tr></thead>
 <tbody>
-<tr><td>Cloudflare Workers (relay)</td><td>The same request that is forwarded to Google Gemini (search coordinates or, if you switch it on, your chat question), plus your IP address</td><td>Passes the request to Google so that our Gemini key is never stored inside the app. The relay does not store the content of your requests. Cloudflare handles connection data under <a href="https://www.cloudflare.com/privacypolicy/">its Privacy Policy</a></td></tr>
+<tr><td>Cloudflare Workers (relay)</td><td>The same request that is forwarded to Google Gemini (search coordinates or, if you switch it on, your chat question), plus your IP address</td><td>Passes the request to Google so that our Gemini key is never stored inside the app. The relay does not keep your chat questions or any account details. To make repeat searches faster it keeps the answer to a place search (the type of place and your search area, rounded to about 100 metres) for up to 10 minutes; it cannot tell searches apart by person. Cloudflare handles connection data under <a href="https://www.cloudflare.com/privacypolicy/">its Privacy Policy</a></td></tr>
 <tr><td>Google Gemini API (Google Maps data)</td><td>Search coordinates (or pincode area) and the type of place you searched for</td><td>Find nearby hospitals, pharmacies, laboratories and imaging centres. Google also receives your device IP address, as with any internet request</td></tr>
 <tr><td>Google Gemini API (AASHU chat)</td><td>Only if you switch it on: the question you type and your last few chat messages</td><td>Write AASHU's answer (see section 6)</td></tr>
 <tr><td>Google Play services location lookup (on your phone)</td><td>The address text of a search result</td><td>Show approximate distances</td></tr>
